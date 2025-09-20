@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Police & Traffic Control Dashboard Design System
+Emergency services themed with professional colors and effects
+*/
+
+@layer base {
+  :root {
+    /* Dashboard Background */
+    --background: 217 25% 8%;
+    --foreground: 210 40% 98%;
+
+    /* Card System */
+    --card: 217 25% 12%;
+    --card-foreground: 210 40% 98%;
+    --card-border: 217 25% 18%;
+
+    /* Emergency Services Primary Colors */
+    --primary: 217 91% 60%; /* Police Blue */
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 217 91% 70%;
+
+    /* Status Colors */
+    --emergency-red: 0 84% 60%; /* Ambulance/Fire */
+    --emergency-yellow: 45 93% 58%; /* Fire Truck */
+    --emergency-green: 142 76% 36%; /* Active/Go */
+    --warning-amber: 38 92% 50%; /* Traffic Yellow */
+
+    /* Secondary & Accent */
+    --secondary: 217 25% 16%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217 25% 14%;
+    --muted-foreground: 217 10% 65%;
+
+    --accent: 217 25% 18%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* UI Elements */
+    --border: 217 25% 20%;
+    --input: 217 25% 16%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Dashboard Specific */
+    --dashboard-header: 217 25% 10%;
+    --control-panel: 217 25% 14%;
+    --status-active: 142 76% 36%;
+    --status-warning: 38 92% 50%;
+    --status-danger: 0 84% 60%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-emergency: linear-gradient(135deg, hsl(var(--emergency-red)), hsl(0 84% 70%));
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(217 25% 14%));
+
+    /* Shadows & Effects */
+    --shadow-control: 0 8px 32px -8px hsl(217 25% 4% / 0.6);
+    --shadow-emergency: 0 0 20px hsl(var(--emergency-red) / 0.3);
+    --shadow-primary: 0 0 20px hsl(var(--primary) / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --pulse-emergency: pulse-emergency 2s ease-in-out infinite;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Dashboard Animations */
+@keyframes pulse-emergency {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes status-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Utility Classes for Dashboard */
+@layer components {
+  .dashboard-card {
+    @apply bg-card border border-[hsl(var(--card-border))] rounded-lg shadow-[var(--shadow-control)] backdrop-blur-sm;
+  }
+  
+  .emergency-indicator {
+    @apply w-3 h-3 rounded-full animate-pulse;
+  }
+  
+  .status-red {
+    @apply bg-[hsl(var(--emergency-red))] shadow-[0_0_10px_hsl(var(--emergency-red)/0.5)];
+  }
+  
+  .status-yellow {
+    @apply bg-[hsl(var(--warning-amber))] shadow-[0_0_10px_hsl(var(--warning-amber)/0.5)];
+  }
+  
+  .status-green {
+    @apply bg-[hsl(var(--emergency-green))] shadow-[0_0_10px_hsl(var(--emergency-green)/0.5)];
+  }
+  
+  .control-button {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+  
+  .control-button-red {
+    @apply control-button bg-[hsl(var(--emergency-red))] text-white hover:shadow-[var(--shadow-emergency)];
+  }
+  
+  .control-button-yellow {
+    @apply control-button bg-[hsl(var(--warning-amber))] text-white hover:shadow-[0_0_20px_hsl(var(--warning-amber)/0.3)];
+  }
+  
+  .control-button-green {
+    @apply control-button bg-[hsl(var(--emergency-green))] text-white hover:shadow-[0_0_20px_hsl(var(--emergency-green)/0.3)];
+  }
+}
